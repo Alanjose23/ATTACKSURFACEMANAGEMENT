@@ -25,7 +25,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
+      overflow: hidden; /* avoid scrolling */
     }
 
     .main-card {
@@ -113,29 +113,36 @@
       margin-bottom: 10px;
     }
 
-    .bio-grid {
+    
+    .team-photo-wrap {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .team-photo {
+      max-width: 100%;
+      height: auto;
+      border-radius: 14px;
+      border: 1px solid #0f3;
+      box-shadow: 0 0 18px rgba(0, 255, 140, 0.25);
+    }
+
+    .member-list {
+      list-style: none;
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .member {
-      flex: 1 1 45%;
-      display: flex;
-      align-items: center;
       gap: 10px;
-      padding: 8px 10px;
-      border-radius: 12px;
-      background: #050e08;
-      border: 1px solid #0b3821;
+      padding: 0;
+      margin: 0;
     }
 
-    .member img {
-      width: 42px;
-      height: 42px;
-      object-fit: cover;
-      border-radius: 999px;
-      border: 1px solid #0f3;
+    .member-list li {
+      flex: 1 1 45%;
+      background: #050e08;
+      border-radius: 10px;
+      border: 1px solid #0b3821;
+      padding: 8px 10px;
     }
 
     .member-name {
@@ -256,9 +263,13 @@
     <div class="content-row">
       <section class="team">
         <h2>Project Team</h2>
-        <div class="bio-grid" id="team-grid">
-          <!-- Filled by JavaScript -->
+        <div class="team-photo-wrap">
+          
+          <img src="team.png" alt="SP-101 Green Team" class="team-photo">
         </div>
+        <ul class="member-list" id="member-list">
+          
+        </ul>
       </section>
 
       <section class="links">
@@ -311,34 +322,19 @@
         "Automated scanning, normalization & cloud-based visualization of vulnerabilities.",
       courseNumber: "CS 4850 – Attack Surface Management",
       term: "Fall 2025",
-      finalReportUrl: "files/SP101-Green-ASM-Final-Report.pdf", // <-- replace with actual PDF path
+      
+      finalReportUrl: "files/SP101-Green-ASM-Final-Report.pdf",
       githubUrl: "https://github.com/rian4000/SP101-Green-ASM",
-      videoUrl: "https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fyoutu.be%2FFGaxmwMklXs&data=05%7C02%7Cajose3%40students.kennesaw.edu%7Cf4f8a00286364ea626cd08de36cbff44%7C45f26ee5f134439ebc93e6c7e33d61c2%7C1%7C0%7C639008446994379221%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=FlwNOQWXfSP0Vc1dpSnWyqVDXUWuTzJ4kopGUR4URbA%3D&reserved=0", // <-- replace with actual narrated video URL
+      videoUrl: "https://example.com/your-final-presentation",
       team: [
-        {
-          name: "Jaimi Reed",
-          role: "Team Lead / Documentation",
-          img: "images/jaimi.jpg"
-        },
-        {
-          name: "Alan Jose",
-          role: "Documentation",
-          img: "images/alan.jpg"
-        },
-        {
-          name: "Julio Martinez",
-          role: "Developer",
-          img: "images/julio.jpg"
-        },
-        {
-          name: "Rian Chowdhury",
-          role: "Developer",
-          img: "images/rian.jpg"
-        }
+        { name: "Jaimi Reed",   role: "Team Lead / Documentation" },
+        { name: "Alan Jose",    role: "Documentation" },
+        { name: "Julio Martinez", role: "Developer" },
+        { name: "Rian Chowdhury", role: "Developer" }
       ]
     };
 
-   
+    
     document.getElementById("project-id-badge").textContent =
       `${projectData.id} • ${projectData.color}`;
     document.getElementById("project-title").textContent = projectData.title;
@@ -350,21 +346,17 @@
     document.getElementById("project-color").textContent =
       `Project Color: ${projectData.color}`;
 
+   
     document.getElementById("final-report-link").href =
       projectData.finalReportUrl;
     document.getElementById("github-link").href = projectData.githubUrl;
     document.getElementById("video-link").href = projectData.videoUrl;
 
-    const teamGrid = document.getElementById("team-grid");
+    
+    const memberList = document.getElementById("member-list");
     projectData.team.forEach((member) => {
-      const div = document.createElement("div");
-      div.className = "member";
+      const li = document.createElement("li");
 
-      const img = document.createElement("img");
-      img.src = member.img;
-      img.alt = member.name;
-
-      const textWrap = document.createElement("div");
       const nameEl = document.createElement("div");
       nameEl.className = "member-name";
       nameEl.textContent = member.name;
@@ -373,13 +365,12 @@
       roleEl.className = "member-role";
       roleEl.textContent = member.role;
 
-      textWrap.appendChild(nameEl);
-      textWrap.appendChild(roleEl);
-      div.appendChild(img);
-      div.appendChild(textWrap);
-      teamGrid.appendChild(div);
+      li.appendChild(nameEl);
+      li.appendChild(roleEl);
+      memberList.appendChild(li);
     });
   </script>
 </body>
 </html>
+
 
