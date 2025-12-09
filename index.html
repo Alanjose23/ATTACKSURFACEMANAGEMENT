@@ -25,7 +25,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
+      overflow: hidden; /* avoid scrolling */
     }
 
     .main-card {
@@ -302,7 +302,7 @@
   </div>
 
   <script>
-    
+    // --------- CONFIGURE YOUR PROJECT DATA HERE ----------
     const projectData = {
       id: "SP-101",
       color: "Green Team",
@@ -337,3 +337,49 @@
         }
       ]
     };
+
+    // --------- RENDER INTO THE PAGE ----------
+    document.getElementById("project-id-badge").textContent =
+      `${projectData.id} • ${projectData.color}`;
+    document.getElementById("project-title").textContent = projectData.title;
+    document.getElementById("project-subtitle").textContent =
+      projectData.subtitle;
+    document.getElementById("course-number").textContent =
+      projectData.courseNumber;
+    document.getElementById("course-term").textContent = projectData.term;
+    document.getElementById("project-color").textContent =
+      `Project Color: ${projectData.color}`;
+
+    document.getElementById("final-report-link").href =
+      projectData.finalReportUrl;
+    document.getElementById("github-link").href = projectData.githubUrl;
+    document.getElementById("video-link").href = projectData.videoUrl;
+
+    const teamGrid = document.getElementById("team-grid");
+    projectData.team.forEach((member) => {
+      const div = document.createElement("div");
+      div.className = "member";
+
+      const img = document.createElement("img");
+      img.src = member.img;
+      img.alt = member.name;
+
+      const textWrap = document.createElement("div");
+      const nameEl = document.createElement("div");
+      nameEl.className = "member-name";
+      nameEl.textContent = member.name;
+
+      const roleEl = document.createElement("div");
+      roleEl.className = "member-role";
+      roleEl.textContent = member.role;
+
+      textWrap.appendChild(nameEl);
+      textWrap.appendChild(roleEl);
+      div.appendChild(img);
+      div.appendChild(textWrap);
+      teamGrid.appendChild(div);
+    });
+  </script>
+</body>
+</html>
+
