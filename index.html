@@ -25,7 +25,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden; /* avoid scrolling */
+      overflow: hidden;
     }
 
     .main-card {
@@ -302,7 +302,7 @@
   </div>
 
   <script>
-    // --------- CONFIGURE YOUR PROJECT DATA HERE ----------
+    
     const projectData = {
       id: "SP-101",
       color: "Green Team",
@@ -313,7 +313,7 @@
       term: "Fall 2025",
       finalReportUrl: "files/SP101-Green-ASM-Final-Report.pdf", // <-- replace with actual PDF path
       githubUrl: "https://github.com/rian4000/SP101-Green-ASM",
-      videoUrl: "https://example.com/your-final-presentation", // <-- replace with actual narrated video URL
+      videoUrl: "https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fyoutu.be%2FFGaxmwMklXs&data=05%7C02%7Cajose3%40students.kennesaw.edu%7Cf4f8a00286364ea626cd08de36cbff44%7C45f26ee5f134439ebc93e6c7e33d61c2%7C1%7C0%7C639008446994379221%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=FlwNOQWXfSP0Vc1dpSnWyqVDXUWuTzJ4kopGUR4URbA%3D&reserved=0", // <-- replace with actual narrated video URL
       team: [
         {
           name: "Jaimi Reed",
@@ -338,7 +338,7 @@
       ]
     };
 
-    // --------- RENDER INTO THE PAGE ----------
+   
     document.getElementById("project-id-badge").textContent =
       `${projectData.id} • ${projectData.color}`;
     document.getElementById("project-title").textContent = projectData.title;
